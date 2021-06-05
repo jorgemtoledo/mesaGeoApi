@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: mesaGeoApi_development
+
+test:
+  <<: *default
+  database: mesaGeoApi_test
+
+production:
+  <<: *default
+  database: mesaGeoApi_production
+  username: mesaGeoApi
+  password: <%= ENV['MESAGEOAPI_DATABASE_PASSWORD'] %>
